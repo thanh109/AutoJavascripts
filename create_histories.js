@@ -37,7 +37,7 @@ async function google_search(kw) {
 async function GoogleSearch() {
   // kw
   var kw = 'kw_google_ads.txt';
-  var kws = await dl(kw);
+  var kwList = await dl(kw);
   // random
   var shuffled = kwList.sort(function(){ return 0.5 - Math.random() });
   var kws = shuffled.slice(0,10);
