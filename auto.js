@@ -23,8 +23,19 @@ async function open_url(url) {
   openWindow = window.open(url, "_blank");
 }
 
-async function openUrls() {
-  for (var url of urlList) {
+async function openUrls(urlList) {
+  var urls = await dl(urlList);
+  for (var url of urls) {
+   await open_url(url);
+     await sleep(3000);
+  }
+ }
+
+ async function openUrls_random(urlList) {
+  var urls = await dl(urlList);
+  var shuffled = urls.sort(function(){ return 0.5 - Math.random() });
+  var urls = shuffled.slice(0,10);
+  for (var url of urls) {
    await open_url(url);
      await sleep(3000);
   }
@@ -34,9 +45,7 @@ async function google_search(kw) {
   openWindow = window.open("https://www.google.com/search?q=" + kw, "_blank");
 
 }
-async function GoogleSearch() {
-  // kw
-  var kw = 'kw_google_ads.txt';
+async function GoogleSearch(kw) {
   var kwList = await dl(kw);
   // random
   var shuffled = kwList.sort(function(){ return 0.5 - Math.random() });
