@@ -27,7 +27,7 @@ async function openUrls(urlList) {
   var urls = await dl(urlList);
   for (var url of urls) {
    await open_url(url);
-     await sleep(3000);
+     await sleep(10000);
   }
  }
 
@@ -37,7 +37,7 @@ async function openUrls(urlList) {
   var urls = shuffled.slice(0,10);
   for (var url of urls) {
    await open_url(url);
-     await sleep(3000);
+     await sleep(10000);
   }
  }
 
