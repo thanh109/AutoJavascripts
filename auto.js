@@ -31,10 +31,10 @@ async function openUrls(urlList) {
   }
  }
 
- async function openUrls_random(urlList) {
+ async function openUrls_random(urlList, n) {
   var urls = await dl(urlList);
   var shuffled = urls.sort(function(){ return 0.5 - Math.random() });
-  var urls = shuffled.slice(0,10);
+  var urls = shuffled.slice(0,n);
   for (var url of urls) {
    await open_url(url);
      await sleep(10000);
@@ -45,11 +45,11 @@ async function google_search(kw) {
   openWindow = window.open("https://www.google.com/search?q=" + kw, "_blank");
 
 }
-async function GoogleSearch(kw) {
+async function GoogleSearch(kw, n) {
   var kwList = await dl(kw);
   // random
   var shuffled = kwList.sort(function(){ return 0.5 - Math.random() });
-  var kws = shuffled.slice(0,10);
+  var kws = shuffled.slice(0,n);
   for (var kw of kws) {
     await google_search(kw);
     await sleep(10000);
